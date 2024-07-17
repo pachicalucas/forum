@@ -1,0 +1,47 @@
+### GET request to example server
+GET https://examples.http-client.intellij.net/get
+    ?generated-in=IntelliJ IDEA
+
+###
+
+### Variáveis globais
+@baseUrl = http://localhost:8080
+@authToken = eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJub3ZvdXN1YXJpbyIsImlhdCI6MTcyMTE2MjI3NCwiZXhwIjoxNzIxNzY3MDc0fQ.AIn1btX4GADW5b7h9CTrQ_kQW0pNYkkLoA4N184852mks9wwb7VEG09l-vHDV9ggEG2HO9-hC084jM9c_tm5VQ
+
+### Criar um novo tópico
+POST {{baseUrl}}/api/topicos
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+  "titulo": "Novo Tópico",
+  "mensagem": "Esta é a mensagem do novo tópico",
+  "autor": {
+    "id": 1
+  },
+  "curso": {
+    "id": 1
+  }
+}
+
+### Listar tópicos (paginado)
+GET {{baseUrl}}/api/topicos?page=0&size=10&sort=dataCriacao,desc
+Authorization: Bearer {{authToken}}
+
+### Detalhar um tópico específico
+GET {{baseUrl}}/api/topicos/1
+Authorization: Bearer {{authToken}}
+
+### Atualizar um tópico
+PUT {{baseUrl}}/api/topicos/1
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+  "titulo": "Tópico Atualizado",
+  "mensagem": "Esta é a mensagem atualizada do tópico"
+}
+
+### Deletar um tópico
+DELETE {{baseUrl}}/api/topicos/1
+Authorization: Bearer {{authToken}}
